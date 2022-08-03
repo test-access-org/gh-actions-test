@@ -27,5 +27,9 @@ jobs:
           git push --set-upstream origin "$versionChange"
           gh pr create --title "$versionChange" --body "update version to $versionChange"
           gh pr merge "$versionChange" --admin --squash
+          sleep 2s
+          git checkout main
+          git pull
+          npm pack
         env:
           GITHUB_TOKEN: ${{ secrets.GH_ACTIONS_SECRET }}
