@@ -23,9 +23,9 @@ jobs:
           echo "version updated to" $versionChange
           git checkout -b "$versionChange"
           git add package*.json
-          git commit -m "version $versionChange"
+          git commit -m "version $versionChange [skip ci]"
           git push --set-upstream origin "$versionChange"
-          gh pr create --title "$versionChange [skip ci]" --body "update version to $versionChange"
+          gh pr create --title "$versionChange" --body "update version to $versionChange"
           gh pr merge "$versionChange" --admin --squash
         env:
           GITHUB_TOKEN: ${{ secrets.GH_ACTIONS_SECRET }}
