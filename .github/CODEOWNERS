@@ -2,4 +2,4 @@
 *   @CalebCourier
 
 # Try to ignore changes to package*.json so version bumps can occur after approval
-!package*.json
+package*.json
