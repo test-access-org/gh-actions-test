@@ -24,7 +24,7 @@ jobs:
           git checkout -b "$versionChange"
           git add package*.json
           git commit -m "version $versionChange"
-          git push --force
+          git push --set-upstream origin "$versionChange"
           gh pr create --title "$versionChange [skip ci]" --body "update version to $versionChange"
           gh pr merge "$versionChange" --admin --squash
         env:
