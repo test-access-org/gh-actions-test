@@ -26,6 +26,6 @@ jobs:
           git commit -m "version $versionChange"
           git push --set-upstream origin "$versionChange"
           gh pr create --title "$versionChange" --body "update version to $versionChange"
-          gh pr merge "$versionChange" --admin
+          gh pr merge "$versionChange" --admin --squash
         env:
           GITHUB_TOKEN: ${{ secrets.GH_ACTIONS_SECRET }}
