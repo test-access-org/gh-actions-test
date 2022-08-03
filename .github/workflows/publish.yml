@@ -24,7 +24,7 @@ jobs:
           git checkout -b "release"
           git add package*.json
           git commit -m "version $versionChange"
-          git push
+          git push --set-upstream origin release
           gh pr create --title "$versionChange" --body "update version to $versionChange"
           gh pr merge release
         env:
