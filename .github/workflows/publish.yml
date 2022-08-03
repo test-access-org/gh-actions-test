@@ -21,9 +21,11 @@ jobs:
           changeType=$(<.version-change-type)
           versionChange=$(npm version $changeType --no-git-tag-version)
           echo "version updated to" $versionChange
+          git checkout -b "release"
+          git add package*.json
+          git commit -m "version $versionChange"
+          git push
           gh pr create --title "$versionChange" --body "update version to $versionChange"
-          : # git add package*.json
-          : # git commit -m "version $versionChange"
-          : # git push
+          gh pr merge release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_ACTIONS_SECRET }}
